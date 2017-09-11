@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="client.js"></script>
+
+    <link rel="stylesheet" href="/nav.css">
+    <script src="nav.js"></script>
+<script src="jquery-3.2.0.js"></script>
+</head>
+<body>
+<form action="/fetch" method="get">
+<div class="nav">
+    <h1>LAPSALE</h1>
+    <span id="menu" style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776; SHOP BY BRAND</span>
+
+    <input id="search" type="text" placeholder="search here" size="70">
+    <input id="button" type="submit" size="10" value="search">
+
+    <div id="cart1"><input id="cart" type="submit" value="cart" size="50" ><span id="no_of_item"></span></div>
+
+</div>
+</form>
+<form action="/fetchbrand" method="get">
+<div id="mySidenav" class="sidenav">
+    <a  class="closebtn" onclick="closeNav()">&times;</a>
+    <a id="hp" href="fetchbrand" >HP</a>
+    <a id="dell" href="fetchbrand">DELL</a>
+    <a id="lenevo" href="fetchbrand">LENEVO</a>
+    <a id="asus" href="fetchbrand">ASUS</a>
+    <a id="apple" href="fetchbrand">APPLE</a>
+</div>
+</form>
+
+<br><br>
+<br>
+
+<div id="cartmaindiv">
+    <button id="leftb"  onclick="plusDivs(-1)" style="float:left">&#10094;</button>
+
+    <button id="rightb"  onclick="plusDivs(-1)" style="float:left">&#10095;</button>
+    <div id="middle"></div>
+</div>
+
+<br><br>
+<br>
+<form action="/addto" method="post">
+<div id="done">
+{{#each row as |i|}}
+    <div class="inlin">
+        <div id="new"> {{i.product_name}}</div>
+        <img id="img" src="{{i.img_path}}"></img>
+        <div id="cost">Rs.{{i.cost}}</div>
+   <div id="atc">  <input type="submit" id="{{i.product_id}}" value="ADD TO CART" onclick="change(this)"></div>
+    </div>
+{{/each}}
+    </div>
+
+</form>
+</body>
+</html>
+

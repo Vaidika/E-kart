@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/nav.css">
+    <script src="nav.js"></script>
+    <script src="jquery-3.2.0.js"></script>
+    <script src="client.js"></script>
+</head>
+<body>
+<div class="nav">
+    <h1>LAPSALE</h1>
+    <span id="menu" style="font-size:20px; cursor:pointer" onclick="openNav()">&#9776; SHOP BY BRAND</span>
+
+    <input id="search" type="text" placeholder="search here" size="70">
+    <input id="button" type="submit" size="10" value="search">
+
+    <div id="cart1"><input id="cart" type="submit" value="cart" size="50" ><span id="no_of_item"></span></div>
+
+</div>
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="fetchbrand">HP</a>
+    <a href="fetchbrand">DELL</a>
+    <a href="fetchbrand">LENEVO</a>
+    <a href="fetchbrand">ASUS</a>
+    <a href="fetchbrand">APPLE</a>
+</div>
+<br><br><br>
+
+<div id="done">
+<form action="/remove" method="post">
+{{#each cart as |j|}}
+    <div class="inlin">
+        <img src="{{j.image}}"></img>
+
+        <div id="atc">  <input type="submit" id="{{j.id}}" value="REMOVE FROM CART" onclick="remove(this)"></div>
+    </div>
+    </form>
+{{/each}}
+</div>
+</body>
+</html>
